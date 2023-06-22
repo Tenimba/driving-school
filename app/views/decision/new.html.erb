@@ -1,8 +1,0 @@
-<h1>Choix de l'action pour l'étape : <%= @etape.titre %></h1>
-
-<%= form_with(model: [@quete, @etape, @decision], url: quete_etape_decisions_path(@quete, @etape), method: :post) do |form| %>
-  <%= form.label :is_questionnaire, "Choisissez l'action" %>
-  <%= form.select :is_questionnaire, [['Questionnaire', true], ['Combat', false]] %>
-
-  <%= form.submit "Valider" %>
-<% end %>

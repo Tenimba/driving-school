@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+<h1> Bonjour {{ user.username }} </h1>
+</br>
+<div class="car">
+  <img src="{% static 'img/voiture.png' %}" alt="voiture" style="width:30%; height: 30%;">
+</div>
+{% endif %}
+  <div id='calendar'>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'jquery/jquery.js' %}"></script>
+    <script src="{% static 'moment/moment.min.js' %}"></script>
+    <script src="{% static 'fullcalendar/main.js' %}"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/smoothness/jquery-ui.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fullcalendar/main.css' %}">
+    <script src="{% static 'js/calendar.js' %}"></script>
+  </div>
+{% endblock %}
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <script src="{% static 'jquery/jquery.min.js' %}"></script>
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="{% static 'moment/moment.min.js' %}"></script>
+  <script src="{% static 'fullcalendar/main.js' %}"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'fullcalendar/main.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <script src="{% static 'js/calendar.js' %}"></script>
+{% endblock %}
+  
+{% block style %}
+<style>
+    .event-finished {
+    background-color: #8a0101;
+    color: #ffffff;
+    border-color: #6b4444;
+  }
+  .event-finished:hover{
+    background-color: #947233;
+    color: #fff;
+    border-color: #947233;
+  }
+  .event-ongoing:hover{
+    background-color: #947233;
+    color: #fff;
+    border-color: #947233;
+  }
+  .event-ongoing{
+    background-color: #FFA500;
+    color: #fff;
+    border-color: #FFA500;
+  }
+  .car {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+}
+  .car:active, .car:focus {
+        left: 100%;
+      }
+      .car:hover {
+        left: 100%;
+      }
+</style>
+
+{% endblock %}
+
+```

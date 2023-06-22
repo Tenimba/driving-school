@@ -1,0 +1,71 @@
+/* Style pour le formulaire */
+form {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  form label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  form input[type="text"],
+  form input[type="number"] {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+  }
+  
+  form input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  form input[type="submit"]:hover {
+    background-color: #0069d9;
+  }
+  
+  /* Style pour le titre */
+  h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .popup {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .popup p {
+    margin-bottom: 10px;
+    }
+    
+    .popup strong {
+    font-weight: bold;
+    }
+    
+    .popup #close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    }
+    
+    .popup #close:hover {
+    color: red;
+    }
+    
+    .popup h3 {
+    margin-top: 0;
+    }

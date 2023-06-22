@@ -1,0 +1,10 @@
+-- database: /home/tenimba/ProjetDriving/nom_du_projet/db.sqlite3
+
+-- Use the ▷ button in the top right corner to run the entire file.
+
+SELECT * FROM "gestion_cours_user_profil";
+
+UPDATE gestion_cours_user_profil AS u
+SET Inspecteurs = 1
+FROM gestion_cours_inspecteur AS i
+WHERE u.id = i.user_id;

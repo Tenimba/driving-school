@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}
+<h1 style="text-align:center; color:#FFA500;">Inscription</h1>
+{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<style>
+  .back-btn {
+    color: #FFA500;
+    font-size: 25px;
+    position: absolute;
+    top: -7vh;
+    left: 20px;
+    transform: rotate(45deg);
+    cursor: pointer;
+  }
+
+  .back-btn:hover::after {
+    position: absolute;
+    top: -8vh;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+  }
+</style>
+<a href="#" class="back-btn" onclick="javascript:history.back()">
+  <span class="material-icons"></span><i class="fas fa-arrow-left"></i></span>
+</a>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">S'inscrire</button>
+  </form>
+{% endblock %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+{% endif %}

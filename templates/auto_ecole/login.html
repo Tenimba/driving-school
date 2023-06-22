@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block title %}
+<h1 style="text-align:center; color:#FFA500;">Connexion</h1>
+{% endblock %}
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" href="{% url 'login' %}">Connexion</button>
+  </form>
+{% endblock %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+{%  block style %}
+<style>
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+input[name="user"],
+input[name="heure_payee"],
+input[type="password"],
+input[name="datetime-local"],
+select {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  margin-top: 0.5rem;
+  width: 100%;
+  max-width: 400px;
+  background-color: #333333 !important;
+  color: #FFA500 !important;
+}
+
+button[type="submit"] {
+  background-color: orange;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  margin-top: 20px;
+  box-shadow: 0px 0px 5px grey;
+}
+
+.alert {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.alert-success {
+  background-color: lightgreen;
+  color: white;
+}
+
+.alert-warning {
+  background-color: orange;
+  color: white;
+}
+
+.alert-danger {
+  background-color: red;
+  color: white;
+}
+
+</style>
+{% endblock %}
+```

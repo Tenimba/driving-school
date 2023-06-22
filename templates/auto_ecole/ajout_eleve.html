@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<h1 style="text-align:center; color:#FFA500;">Ajout d'un élève</h1>
+{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<style>
+  .back-btn {
+    color: #FFA500;
+    font-size: 25px;
+    position: absolute;
+    top: -7vh;
+    left: 20px;
+    transform: rotate(45deg);
+    cursor: pointer;
+  }
+
+  .back-btn:hover::after {
+    position: absolute;
+    top: -8vh;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+  }
+</style>
+<a href="#" class="back-btn" onclick="javascript:history.back()">
+  <span class="material-icons"></span><i class="fas fa-arrow-left"></i></span>
+</a>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Ajouter</button>
+  </form>
+{% endblock %}
+{% block style %}
+<style>
+  body {
+  background-color: #ffffff;
+  color: #FFA500;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* Formulaire */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center !important;
+  margin-top: 3rem;
+  border: #eee solid 1px;
+  background-color: #000000;
+  align-self: center;
+  width: 50%;
+  padding: 2rem;
+}
+
+label {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="datetime-local"],
+select {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  margin-top: 0.5rem;
+  width: 100%;
+  max-width: 400px;
+  background-color: #333333;
+  color: #FFA500;
+}
+
+.cours_eleve, .cours_inspecteur, .cours_heuredebut {
+  color: #FFA500;
+  background-color: #333333;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.cours_une_heure,
+.cours_deux_heures,
+.cours_trois_heures {
+  display: inline-block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.cours_une_heure input,
+.cours_deux_heures input,
+.cours_trois_heures input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.cours_une_heure .checkmark:after,
+.cours_deux_heures .checkmark:after,
+.cours_trois_heures .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.cours_une_heure input:checked ~ .checkmark:after,
+.cours_deux_heures input:checked ~ .checkmark:after,
+.cours_trois_heures input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.cours_une_heure .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.cours_deux_heures .checkmark:after {
+  left: 8px;
+  top: 6px;
+  width: 10px;
+  height: 5px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.cours_trois_heures .checkmark:after {
+  left: 5px;
+  top: 4px;
+  width: 15px;
+  height: 5px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+</style>
+{% endblock %}
+```

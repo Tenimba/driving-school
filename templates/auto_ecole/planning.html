@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<style>
+  .back-btn {
+    color: #FFA500;
+    font-size: 25px;
+    position: absolute;
+    top: -7vh;
+    left: 20px;
+    transform: rotate(45deg);
+    cursor: pointer;
+  }
+
+  .back-btn:hover::after {
+    position: absolute;
+    top: -8vh;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+  }
+</style>
+<a href="#" class="back-btn" onclick="javascript:history.back()">
+  <span class="material-icons"></span><i class="fas fa-arrow-left"></i></span>
+</a>
+
+{% if events.0.user == 'eleve' %}
+<h1> planning de  l'eleve:  {{ events.0.eleve }}</h1>
+{% endif %}
+{% if events.0.user == 'secretaire' %}
+<h1> planning de l'inspecteur:  {{ events.0.inspecteur.nom}}</h1>
+{% endif %}
+  <div id='calendar'>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'jquery/jquery.js' %}"></script>
+    <script src="{% static 'moment/moment.min.js' %}"></script>
+    <script src="{% static 'fullcalendar/main.js' %}"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fullcalendar/main.css' %}">
+    <script src="{% static 'js/profil.js' %}"></script>
+  </div>
+{% endblock %}
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <script src="{% static 'jquery/jquery.min.js' %}"></script>
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="{% static 'moment/moment.min.js' %}"></script>
+  <script src="{% static 'fullcalendar/main.js' %}"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'fullcalendar/main.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <script src="{% static 'js/profil.js' %}"></script>
+
+{% endblock %}
+  
+{% block style %}
+<style>
+  .event-finished {
+    background-color: #6b4444;
+    color: #6c757d;
+    border-color: #6b4444;
+  }
+  .event-finished:hover{
+    background-color: #947233;
+    color: #fff;
+    border-color: #947233;
+  }
+  .event-ongoing:hover{
+    background-color: #947233;
+    color: #fff;
+    border-color: #947233;
+  }
+  .event-ongoing{
+    background-color: #FFA500;
+    color: #fff;
+    border-color: #FFA500;
+  }
+</style>
+{% endblock %}
+
+
+
+
+```

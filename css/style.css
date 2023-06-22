@@ -1,0 +1,61 @@
+/* Couleur de fond */
+body {
+  background-color: #ffffff;
+  color: #FFA500;
+}
+
+/* Titre */
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+/* Formulaire */
+form {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Label */
+label {
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Input */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+select {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  margin-top: 0.5rem;
+  width: 100%;
+  max-width: 400px;
+  background-color: #333333;
+  color: #FFA500;
+}
+
+/* Bouton */
+button[type="submit"] {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #FFA500;
+  color: #262626;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #FF8C00;
+  color: #262626;
+}

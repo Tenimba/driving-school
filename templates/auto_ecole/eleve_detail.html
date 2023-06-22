@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<h1 style="text-align:center; color:#FFA500;">Détails de l'élève</h1>
+{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<style>
+  .back-btn {
+    color: #FFA500;
+    font-size: 25px;
+    position: absolute;
+    top: -7vh;
+    left: 20px;
+    transform: rotate(45deg);
+    cursor: pointer;
+  }
+
+  .back-btn:hover::after {
+    position: absolute;
+    top: -8vh;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+  }
+</style>
+<a href="#" class="back-btn" onclick="javascript:history.back()">
+  <span class="material-icons"></span><i class="fas fa-arrow-left"></i></span>
+</a>
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-body">
+          <table class="table table-bordered table-striped bg-light">
+            <tbody>
+              <tr>
+                <td class="font-weight-bold" style="color: #000;">Nom :</td>
+                <td style="color: #000;">{{ eleve.nom }}</td>
+              </tr>
+              <tr>
+                <td class="font-weight-bold" style="color: #000;">Prénom :</td>
+                <td style="color: #000;">{{ eleve.prenom }}</td>
+              </tr>
+              <tr>
+                <td class="font-weight-bold" style="color: #000;">Email :</td>
+                <td style="color: #000;">{{ eleve.email }}</td>
+              </tr>
+              <tr>
+                <td class="font-weight-bold" style="color: #000;">Numéro de téléphone :</td>
+                <td style="color: #000;">{{ utilisateur.numero }}</td>
+              </tr>
+              <tr>
+                <td class="font-weight-bold" style="color: #000;">Date d'arrivée :</td>
+                <td style="color: #000;">{{ utilisateur.date_joined }}</td>
+              </tr>
+              <tr>
+                <td class="font-weight-bold" style="color: #000;">disponible entre :</td>
+                <td style="color: #000;">{{ eleve.heuredispo }}h et {{ eleve.heureindispo }}h du lundi au vendredi</td>
+              </tr>
+              <tr>
+                <td class="font-weight-bold">Heure deja prise/Heure Payee  :</td>
+                <td>
+                  <div class="wrapper-range">
+                    <div class="sliderValue">
+                     <span>{{ heure }}</span>
+                  </div>
+                  {% if heurecalcule == 0 %}
+                  <input type="range" min="0" max="{{heurePaye}}" value="{{ heure }}" class="range red-cursor" disabled>
+                  {% elif heurecalcule < 5 %}
+                  <input type="range" min="0" max="{{heurePaye}}" value="{{ heure }}" class="range orange-cursor" disabled>
+                  {% else %}
+                  <input type="range" min="0" max="{{heurePaye}}" value="{{ heure }}" class="range green-cursor" disabled>
+                    {% endif %}   
+                       <div class="value right">
+                        {{heurePaye}}
+                      </div>
+                      </div>
+                  </div>
+                </td>
+              </tr>
+              {% if user.Secretaires %}
+              <tr>
+                <td class="font-weight-bold" style="color: #000;">Inspecteur :</td>
+                <td style="color: #000;">{{ eleve.inspecteur.nom }} {{ eleve.inspecteur.prenom }}</td>
+              </tr>
+              <tr>
+                <td class="font-weight-bold" style="color: #000;">Email de l'inspecteur :</td>
+                <td style="color: #000;">{{ eleve.inspecteur.email }}</td>
+              </tr>
+              {% endif %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block style %}
+<style>
+ .wrapper-range {
+  display: flex;
+  align-items: center;
+}
+
+.sliderValue {
+  margin-right: 10px;
+}
+
+.range {
+  height: 10px;
+  border-radius: 5px;
+  background: #ddd;
+  outline: none;
+  margin: 0;
+}
+
+.red-cursor::-webkit-slider-thumb {
+  background-color: red;
+}
+
+.orange-cursor::-webkit-slider-thumb {
+  background-color: orange;
+}
+
+.green-cursor::-webkit-slider-thumb {
+  background-color: green;
+}
+
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+</style>
+{% endblock %}
