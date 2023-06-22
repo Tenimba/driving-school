@@ -1,0 +1,9 @@
+<!-- app/views/quetes/show.html.erb -->
+<h1>Quête : <%= @quete.titre %></h1>
+
+<!-- Afficher les étapes -->
+<% @etapes.each do |etape| %>
+  <h2>Étape <%= etape.numero %></h2>
+  <p><%= etape.description %></p>
+  <!-- Autres informations spécifiques à l'étape -->
+<% end %>

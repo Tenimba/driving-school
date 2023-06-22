@@ -1,0 +1,78 @@
+<h1>Créer un personnage</h1>
+
+<%= form_with model: @personnage, url: edit_personnage_path, method: :patch do |f| %>
+  <p>
+    <%= f.label :nom %>
+    <%= f.text_field :nom %>
+  </p>
+
+  <p>
+    <%= f.label :force %>
+    <%= f.number_field :force, id: 'force' %>
+    <button class="lancer-de" data-caracteristique="force">Lancer</button>
+  </p>
+
+  <p>
+    <%= f.label :vie %>
+    <%= f.number_field :vie, id: 'vie' %>
+    <button class="lancer-de" data-caracteristique="vie">Lancer</button>
+  </p>
+
+  <p>
+    <%= f.label :xp %>
+    <%= f.number_field :xp, id: 'xp' %>
+    <button class="lancer-de" data-caracteristique="xp">Lancer</button>
+  </p>
+
+  <p>
+    <%= f.label :agilite %>
+    <%= f.number_field :agilite, id: 'agilite' %>
+    <button class="lancer-de" data-caracteristique="agilite">Lancer</button>
+  </p>
+
+  <p>
+    <%= f.label :charisme %>
+    <%= f.number_field :charisme, id: 'charisme' %>
+    <button class="lancer-de" data-caracteristique="charisme">Lancer</button>
+  </p>
+
+  <p>
+    <%= f.label :intelligence %>
+    <%= f.number_field :intelligence, id: 'intelligence' %>
+    <button class="lancer-de" data-caracteristique="intelligence">Lancer</button>
+  </p>
+
+  <p>
+    <%= f.label :endurance %>
+    <%= f.number_field :endurance, id: 'endurance' %>
+    <button class="lancer-de" data-caracteristique="endurance">Lancer</button>
+  </p>
+
+  <p>
+    <%= f.label :chance %>
+    <%= f.number_field :chance, id: 'chance' %>
+    <button class="lancer-de" data-caracteristique="chance">Lancer</button>
+  </p>
+
+  <p>
+    <%= f.submit 'Créer' %>
+  </p>
+<% end %>
+
+<%= javascript_include_tag 'dice.min' %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('.lancer-de').click(function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      var caracteristique = $(this).data('caracteristique');
+      var valeur = $('#' + caracteristique).val();
+      var resultat = new Dice().roll();
+      $('#' + caracteristique).val(resultat);
+      $(this).prop('disabled', true).css('background-color', 'grey');
+    #   $(this).addstyle('background-color', 'grey');
+
+    });
+  });
+</script>

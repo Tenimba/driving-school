@@ -1,0 +1,2 @@
+module QuetesHelper
+end

@@ -1,0 +1,10 @@
+<h1>Ajouter une décision pour l'étape : <%= @etape.titre %></h1>
+
+<%= form_with(model: [@quete, @etape, @decision], url: quete_etape_decision_index_path(@quete, @etape), method: :post) do |form| %>
+  <div class="field">
+    <%= form.label :is_questionnaire, "Type de décision" %>
+    <%= form.select :is_questionnaire, [['Questionnaire', true], ['Combat', false]] %>
+  </div>
+
+  <%= form.submit "Ajouter la décision" %>
+<% end %>

@@ -1,0 +1,45 @@
+<h1>Liste des personnages</h1>
+
+<%= form_tag select_personnage_url, method: :get do %>
+  <table>
+    <thead>
+      <tr>
+        <th>Sélectionner</th>
+        <th>Nom</th>
+        <th>Force</th>
+        <th>Vie</th>
+        <th>XP</th>
+        <th>Agilité</th>
+        <th>Charisme</th>
+        <th>Intelligence</th>
+        <th>Endurance</th>
+        <th>Chance</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @personnages.each do |personnage| %>
+        <tr>
+          <td><%= radio_button_tag 'personnage_id', personnage.id %></td>
+          <td><%= personnage.nom %></td>
+          <td><%= personnage.force %></td>
+          <td><%= personnage.vie %></td>
+          <td><%= personnage.xp %></td>
+          <td><%= personnage.agilite %></td>
+          <td><%= personnage.charisme %></td>
+          <td><%= personnage.intelligence %></td>
+          <td><%= personnage.endurance %></td>
+          <td><%= personnage.chance %></td>
+          <td>
+            <%= link_to 'Modifier', edit_personnage_path(personnage) %>
+            <%= link_to 'Supprimer', personnage, method: :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer ce personnage ?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= submit_tag 'Valider' %>
+<% end %>
+
+<%= link_to 'Créer un personnage', new_personnage_path %>

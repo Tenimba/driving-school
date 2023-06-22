@@ -1,0 +1,17 @@
+<h1>Ajouter une quête</h1>
+
+<%= form_with model: @quete, url: quetes_path do |form| %>
+  <div>
+    <%= form.label :titre %>
+    <%= form.text_field :titre %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <%= form.submit "Ajouter" %>
+<% end %>
+
+<%= link_to "Retour", new_quete_path %>

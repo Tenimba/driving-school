@@ -1,0 +1,21 @@
+<nav class="menu-hamburger">
+  <div class="menu-toggle"></div>
+  <ul class="menu">
+    <li><%= link_to "Mon profil", profil_path %></li>
+    <li><%= link_to "Mes quests", quetes_path %></li>
+    <li><%= link_to "Mes Personnages", personnages_url %></li>
+    <li><%= link_to "Deconnexion", destroy_user_session_path, method: :delete %></li>
+  </ul>
+</nav>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var menuToggle = document.querySelector('.menu-toggle');
+  var menu = document.querySelector('.menu');
+
+  menuToggle.addEventListener('click', function() {
+    menu.classList.toggle('active');
+  });
+});
+
+</script>

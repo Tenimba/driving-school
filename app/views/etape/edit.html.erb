@@ -1,0 +1,11 @@
+<h1>Modifier l'étape</h1>
+
+<%= form_with(model: [@quete, @etape], url: quete_etape_path(@quete, @etape), method: :patch) do |form| %>
+  <%= form.label :titre, "titre de l'étape" %>
+  <%= form.text_field :titre %>
+
+  <%= form.label :description, "Description de l'étape" %>
+  <%= form.text_area :description, rows: 3 %>
+
+  <%= form.submit "Mettre à jour l'étape" %>
+<% end %>

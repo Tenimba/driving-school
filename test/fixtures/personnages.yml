@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nom: MyString
+  niveau: 1
+  vie: 1
+  force: 1
+  agilite: 1
+  intelligence: 1
+  charisme: 1
+  chance: 1
+
+two:
+  nom: MyString
+  niveau: 1
+  vie: 1
+  force: 1
+  agilite: 1
+  intelligence: 1
+  charisme: 1
+  chance: 1

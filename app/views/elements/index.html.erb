@@ -1,0 +1,39 @@
+<div class="actions">
+<%= link_to "Retour", quete_etape_index_path(@quete, @etape), class: "btn btn-primary" %>
+</div>
+
+<h1>Liste des éléments :</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+    <% if current_user.role == 'game_master' %>
+      <th>Quete</th>
+    <% end %>
+      <th>Image</th>
+      <th>Force</th>
+      <th>Vie</th>
+      <th>XP</th>
+      <th>Type</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @elements.each do |element| %>
+      <tr>
+      <% if current_user.role == 'game_master' %>
+        <td><%= element.quete.titre %></td>
+      <% end %>
+        <td><%= image_tag element.image, class: "element-image" %></td>
+        <td><%= element.force %></td>
+        <td><%= element.vie %></td>
+        <td><%= element.xpplus %></td>
+        <td><%= element.element_type %></td>
+        <td>
+          <%= link_to "Modifier", edit_element_path(element), class: "btn btn-primary" %>
+          <%= link_to "Supprimer", element_path(element), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cet élément ?" }, class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

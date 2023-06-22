@@ -1,0 +1,41 @@
+<div class="actions">
+<%= link_to "Retour", elements_path, class: "btn btn-secondary" %>
+</div>
+
+<h1>Modifier l'élément</h1>
+
+<%= form_with(model: @element, url: element_path(@element), method: :patch, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :force %>
+    <%= form.number_field :force %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vie %>
+    <%= form.number_field :vie %>
+  </div>
+
+  <div class="field">
+    <%= form.label :xpplus %>
+    <%= form.number_field :xpplus %>
+  </div>
+
+  <div class="field">
+    <%= form.label :element_type %>
+    <%= form.select :element_type, Element.element_types.keys.map { |type| [type.capitalize, type] } %>
+  </div>
+
+    <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+    <% if @element.image.attached? %>
+      <br>
+      <%= image_tag @element.image, class: "element-image" %>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Mettre à jour", class: "btn btn-primary" %>
+
+  </div>
+<% end %>

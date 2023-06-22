@@ -1,0 +1,50 @@
+<%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "logout-button" %>
+<h1>Liste des quêtes</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @quetes.each do |quete| %>
+      <tr>
+        <td><%= quete.titre %></td>
+        <td><%= quete.description %></td>
+        <td>
+          <% if current_user.role == 'game_master' %>
+            <%= link_to edit_quete_path(quete), class: "action-link edit-link" do %>
+              <i class="fas fa-pencil-alt"></i>
+            <% end %>
+            <%= link_to quete_path(quete), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cette quête ?" }, class: "action-link delete-link" do %>
+              <i class="fas fa-trash"></i>
+            <% end %>
+            <%= link_to new_quete_etape_path(quete), class: "action-link add-link" do %>
+              <i class="fas fa-plus"></i>
+            <% end %>
+            <%= link_to quete_etape_index_url(quete), class: "action-link view-link" do %>
+              <i class="fas fa-eye"></i>
+            <% end %>
+          <% else %>
+          <%= link_to quete_etape_index_url(quete, personnage_id: params[:personnage_id]), class: "action-link view-link" do %>
+            <i class="fas fa-eye"></i>
+          <% end %>          
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if current_user.role == 'game_master' %>
+<%= link_to elements_path, class: "btn btn-primary" do %>
+  Voir toutes les éléments
+<% end %>
+
+  <%= link_to new_quete_path, class: "btn btn-primary" do %>
+    Créer une nouvelle quête
+  <% end %>
+<% end %>

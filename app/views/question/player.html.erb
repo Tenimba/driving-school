@@ -1,0 +1,16 @@
+<%= form_with url: valider_question_quete_etape_quete_etape_path(id: @etape.id, quete_id: @quete.id, personnage_id: params[:personnage_id]), method: :post do |f| %>
+
+    <% @questions.first(3).each do |question| %>
+      <h2><%= question.content %></h2>
+      <ul>
+        <% question.reponses.each do |reponse| %>
+          <li>
+            <%= f.radio_button "reponses[#{question.id}]", reponse.id, required: true %>
+            <%= f.label "reponses[#{question.id}][#{reponse.id}]", reponse.contenu %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+    <%= f.submit "Valider" %>
+  <% end %>
+  

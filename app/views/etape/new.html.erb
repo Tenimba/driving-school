@@ -1,0 +1,12 @@
+<h1>Nouvelle étape</h1>
+
+<%= form_with(model: [@quete, @etape], url: quete_etape_index_url(@quete)) do |form| %>
+  <%= form.label :titre, "Titre de l'étape" %>
+  <%= form.text_field :titre %>
+  <%= form.label :description, "Description de l'étape" %>
+  <%= form.text_area :description, rows: 3 %>
+  <%= form.label :xp, "XP" %>
+  <%= form.number_field :xp %>
+
+  <%= form.submit "Créer l'étape" %>
+<% end %>

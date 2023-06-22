@@ -1,0 +1,14 @@
+<h1>Choix de l'étape : <%= @etape.titre %></h1>
+
+<%= form_with(url: traiter_choix_etape_quete_etape_path(quete_id: @quete.id, etape_id: @etape.id, personnage_id: params[:personnage_id]), method: :post) do |form| %>
+
+  <p>Veuillez sélectionner une option :</p>
+
+  <%= form.radio_button :choix, 'questionnaire' %>
+  <%= form.label :choix_questionnaire, "Questionnaire" %><br>
+
+  <%= form.radio_button :choix, 'combat' %>
+  <%= form.label :choix_combat, "Combat" %><br>
+
+  <%= form.submit "Valider" %>
+<% end %>

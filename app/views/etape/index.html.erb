@@ -1,0 +1,44 @@
+<div class="actions">
+<%= link_to "Retour", quetes_path, class: "btn btn-secondary" %>
+</div>
+
+<h1>Liste des étapes de la quête : <%= @quete.titre %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Description</th>
+      <th>XP à gagner</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @etapes.each do |etape| %>
+    <tr>
+      <td><%= etape.titre %></td>
+      <td><%= etape.description %></td>
+      <td><%= etape.xp %></td>
+      <% if current_user.role == 'game_master' %>
+        <td>
+          <%= link_to edit_quete_etape_path(@quete, etape), class: "action-link edit-link" do %>
+            <i class="fas fa-pencil-alt"></i>
+          <% end %>
+          <%= link_to quete_etape_path(@quete, etape), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cette étape ?" }, class: "action-link add-link" do %>
+            <i class="fas fa-trash"></i>
+          <% end %>
+        </td>
+      <% else %>
+        <td>
+          <% if @termine.pluck(:etape_id).include?(etape.id.to_i) %>
+            Étape terminée
+            <%= link_to("Commencer l'étape", choix_etape_quete_etape_path({ quete_id: @quete.id, id: etape.id, personnage_id: params[:personnage_id] }), class: "action-link add-link")%>
+          <% else %>
+              <%= link_to("Commencer l'étape", choix_etape_quete_etape_path({ quete_id: @quete.id, id: etape.id, personnage_id: params[:personnage_id] }), class: "action-link add-link")%>
+          <% end %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>  
+  </tbody>
+</table>
